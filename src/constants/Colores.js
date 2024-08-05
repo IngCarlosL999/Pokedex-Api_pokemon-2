@@ -1,0 +1,81 @@
+const colorByTypes ={
+    normal:"bg-[#BCBCAC]",
+    fighting: "bg-[#bc5442]",
+    flying: "bg-[#669aff]",
+    poison: "bg-[#ab549a]",
+    ground: "bg-[#debc54]",
+    rock: "bg-[#bcac66]",
+    bug:"bg-[#abbc1c]",
+    ghost:"bg-[#6666bc]",
+    steel:"bg-[#abacbc]",
+    fire:"bg-[#ff421c]",
+    water:"bg-[#2f9aff]",
+    grass:"bg-[#78cd54]",
+    electric:"bg-[#ffcd30]",
+    psychic:"bg-[#ff549a]",
+    ice: "bg-[#78deff]",
+    dragon:"bg-[#7866ef]",
+    dark:"bg-[#785442]",
+    fairy:"bg-[#ffacff]",
+    unknow:"",
+    shadow:"",
+
+  }
+
+  const colorByStat = {
+    HP: "[&>div]:bg-red-500 bg-slate-100",
+    ATK: "[&>div]:bg-orange-500 bg-slate-100",
+    DEF: "[&>div]:bg-yellow-500 bg-slate-100",
+    SpA: "[&>div]:bg-blue-300 bg-slate-100",
+    SpD: "[&>div]:bg-green-500 bg-slate-100",
+    SPD: "[&>div]:bg-pink-500 bg-slate-100",
+    TOT: "[&>div]:bg-blue-500 bg-blue-300",
+  };
+
+  const colorByText = {
+    normal: "text-[#BCBCAC]",
+    fighting: "text-[#bc5442]",
+    flying: "text-[#669aff]",
+    poison: "text-[#ab549a]",
+    ground: "text-[#debc54]",
+    rock: "text-[#bcac66]",
+    bug: "text-[#abbc1c]",
+    ghost: "text-[#6666bc]",
+    steel: "text-[#abacbc]",
+    fire: "text-[#ff421c]",
+    water: "text-[#2f9aff]",
+    grass: "text-[#78cd54]",
+    electric: "text-[#ffcd30]",
+    psychic: "text-[#ff549a]",
+    ice: "text-[#78deff]",
+    dragon: "text-[#7866ef]",
+    dark: "text-[#785442]",
+    fairy: "text-[#ffacff]",
+    unknown: "", // Cambié "unknow" a "unknown" para mantener la consistencia
+    shadow: "",
+};
+
+const borderByTypes = {
+  normal: "border-[#BCBCAC]",
+  fighting: "border-[#bc5442]",
+  flying: "border-[#669aff]",
+  poison: "border-[#ab549a]",
+  ground: "border-[#debc54]",
+  rock: "border-[#bcac66]",
+  bug: "border-[#abbc1c]",
+  ghost: "border-[#6666bc]",
+  steel: "border-[#abacbc]",
+  fire: "border-[#ff421c]",
+  water: "border-[#2f9aff]",
+  grass: "border-[#78cd54]",
+  electric: "border-[#ffcd30]",
+  psychic: "border-[#ff549a]",
+  ice: "border-[#78deff]",
+  dragon: "border-[#7866ef]",
+  dark: "border-[#785442]",
+  fairy: "border-[#ffacff]",
+  unknown: "",
+  shadow: "",
+};
+
+  export {colorByTypes , colorByStat, colorByText, borderByTypes}
