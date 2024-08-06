@@ -17,7 +17,10 @@ const Pokemons = () => {
     const totalFiltered = filteredPokemons.length;
     const totalPages = Math.ceil(totalFiltered / pokemonsPerPage);
 
-    const indexOfLastPokemon = currentPage * pokemonsPerPage;
+    // Asegurarse de que currentPage no exceda el total de páginas
+    const validPage = Math.max(1, Math.min(currentPage, totalPages));
+
+    const indexOfLastPokemon = validPage * pokemonsPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = filteredPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
@@ -40,13 +43,13 @@ const Pokemons = () => {
     }, []);
 
     const handleNextPage = () => {
-        if (currentPage < totalPages) {
+        if (validPage < totalPages) {
             setCurrentPage(prevPage => prevPage + 1);
         }
     };
 
     const handlePrevPage = () => {
-        if (currentPage > 1) {
+        if (validPage > 1) {
             setCurrentPage(prevPage => prevPage - 1);
         }
     };
@@ -74,35 +77,35 @@ const Pokemons = () => {
             </form>
             
             <div className='flex justify-center items-center mt-4 gap-4'>
-                {totalFiltered > 0 && currentPage > 1 && (
+                {totalFiltered > 0 && validPage > 1 && (
                     <button onClick={handlePrevPage} className='bg-gray-300 p-2 rounded-lg hover:bg-blue-400'>
                         Prev
                     </button>
                 )}
 
                 <div className='flex gap-2 rounded-lg'>
-                    {currentPage > 1 && (
+                    {validPage > 1 && (
                         <button
-                            onClick={() => handlePageClick(currentPage - 1)}
+                            onClick={() => handlePageClick(validPage - 1)}
                             className='bg-gray-300 p-3 rounded-full'
                         >
-                            {currentPage - 1}
+                            {validPage - 1}
                         </button>
                     )}
                     <span className='bg-red-600 text-white p-3 rounded-lg'>
-                        {currentPage}
+                        {validPage}
                     </span>
-                    {currentPage < totalPages && (
+                    {validPage < totalPages && (
                         <button
-                            onClick={() => handlePageClick(currentPage + 1)}
+                            onClick={() => handlePageClick(validPage + 1)}
                             className='bg-gray-300 p-3 rounded-full'
                         >
-                            {currentPage + 1}
+                            {validPage + 1}
                         </button>
                     )}
                 </div>
 
-                {totalFiltered > 0 && currentPage < totalPages && (
+                {totalFiltered > 0 && validPage < totalPages && (
                     <button onClick={handleNextPage} className='bg-gray-300 p-2 rounded-lg hover:bg-blue-400 transition-colors'>
                         Next
                     </button>
