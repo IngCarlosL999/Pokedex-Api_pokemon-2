@@ -28,14 +28,13 @@ const Pokemons = () => {
 
     useEffect(() => {
         const url = "https://pokeapi.co/api/v2/pokemon?limit=898";
-        axios
-            .get(url)
+        axios.get(url)
             .then(({ data }) => {
                 setAllPokemons(data.results);
                 setError(null); // Resetea el error si la llamada es exitosa
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
                 setError("Error al cargar los Pokémon. Intenta de nuevo más tarde.");
             });
     }, []);
@@ -68,7 +67,7 @@ const Pokemons = () => {
                         placeholder='Busca tu Pokémon'
                         onChange={handleSearchPokemonName}
                     />
-                    <button className='bg-red-600 p-2 rounded-xl shadow-lg shadow-red-600/50 hover:bg-red-400 transition-colors'>
+                    <button type="button" className='bg-red-600 p-2 rounded-xl shadow-lg shadow-red-600/50 hover:bg-red-400 transition-colors'>
                         <IconSearch color='white' stroke={3} />
                     </button>
                 </div>
@@ -123,5 +122,3 @@ const Pokemons = () => {
 };
 
 export default Pokemons;
-
-
