@@ -33,6 +33,7 @@ const Pokemons = () => {
         const url = "https://pokeapi.co/api/v2/pokemon?limit=898";
         axios.get(url)
             .then(({ data }) => {
+                
                 setAllPokemons(data.results);
                 setError(null); // Resetea el error si la llamada es exitosa
             })
