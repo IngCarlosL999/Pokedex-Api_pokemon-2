@@ -6,4 +6,8 @@
 
 .pixelated{
     image-rendering: pixelated;
+    object-fit: contain;
+    object-position: center;
+
+    
 }

@@ -106,8 +106,8 @@ const Pokemons = () => {
 
             {filteredPokemons.length === 0 ? (
                 <div className='flex flex-col items-center mt-8'>
-                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png' alt='Pokemon not found' className='w-32 h-32' />
-                    <h2 className='text-2xl font-bold mt-4'>Pokemon not found</h2>
+                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/25.png' alt='Pokemon not found' className='w-32 h-32 pixelated ' />
+                    <h2 className='text-2xl font-bold mt-1'>Pokemon not found</h2>
                 </div>
             ) : (
                 <PokemonsList poke={currentPokemons} />
