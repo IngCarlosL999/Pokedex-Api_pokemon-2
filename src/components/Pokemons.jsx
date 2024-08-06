@@ -7,7 +7,7 @@ const Pokemons = () => {
     const [allPokemons, setAllPokemons] = useState([]);
     const [pokemonNameSearch, setPokemonNameSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const pokemonsPerPage = 15;
+    const pokemonsPerPage = 30;
 
     const filteredPokemons = allPokemons.filter(pokemon => 
         pokemon.name.toLowerCase().startsWith(pokemonNameSearch.toLowerCase())
