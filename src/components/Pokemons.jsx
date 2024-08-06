@@ -13,13 +13,16 @@ const Pokemons = () => {
         pokemon.name.toLowerCase().startsWith(pokemonNameSearch.toLowerCase())
     );
 
+    const totalFiltered = filteredPokemons.length;
+    const totalPages = Math.ceil(totalFiltered / pokemonsPerPage);
+
     const indexOfLastPokemon = currentPage * pokemonsPerPage;
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = filteredPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
     const handleSearchPokemonName = (e) => {
-        setPokemonNameSearch(e.target.value.toLowerCase());
-        setCurrentPage(1); // Reset to the first page on new search
+        setPokemonNameSearch(e.target.value);
+        setCurrentPage(1); // Reiniciar a la primera página en una nueva búsqueda
     };
 
     useEffect(() => {
@@ -30,17 +33,15 @@ const Pokemons = () => {
             .catch((err) => console.log(err));
     }, []);
 
-    const totalPages = Math.ceil(filteredPokemons.length / pokemonsPerPage);
-
     const handleNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            setCurrentPage(prevPage => prevPage + 1);
         }
     };
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            setCurrentPage(prevPage => prevPage - 1);
         }
     };
 
@@ -56,8 +57,7 @@ const Pokemons = () => {
                         className='outline-none flex-1'
                         type="text"
                         autoComplete='off'
-                        placeholder='Search your Pokemon'
-                        name='pokemonNameSearch'
+                        placeholder='Busca tu Pokémon'
                         onChange={handleSearchPokemonName}
                     />
                     <button className='bg-red-600 p-2 rounded-xl shadow-lg shadow-red-600/50 hover:bg-red-400 transition-colors'>
@@ -67,8 +67,7 @@ const Pokemons = () => {
             </form>
             
             <div className='flex justify-center items-center mt-4 gap-4'>
-                {/* Solo se muestra el prev si es mayor que 0 */}
-                {filteredPokemons.length > 0 && currentPage > 1 && (
+                {totalFiltered > 0 && currentPage > 1 && (
                     <button onClick={handlePrevPage} className='bg-gray-300 p-2 rounded-lg hover:bg-blue-400'>
                         Prev
                     </button>
@@ -96,18 +95,17 @@ const Pokemons = () => {
                     )}
                 </div>
 
-                {/* Solo se muestra el next si es mayor que 0 */}
-                {filteredPokemons.length > 0 && currentPage < totalPages && (
+                {totalFiltered > 0 && currentPage < totalPages && (
                     <button onClick={handleNextPage} className='bg-gray-300 p-2 rounded-lg hover:bg-blue-400 transition-colors'>
                         Next
                     </button>
                 )}
             </div>
 
-            {filteredPokemons.length === 0 ? (
+            {totalFiltered === 0 ? (
                 <div className='flex flex-col items-center mt-8'>
-                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/25.png' alt='Pokemon not found' className='w-32 h-32 pixelated ' />
-                    <h2 className='text-2xl font-bold mt-1'>Pokemon not found</h2>
+                    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/25.png' alt='Pokémon no encontrado' className='w-32 h-32 pixelated ' />
+                    <h2 className='text-2xl font-bold mt-1'>Pokémon no encontrado</h2>
                 </div>
             ) : (
                 <PokemonsList poke={currentPokemons} />
