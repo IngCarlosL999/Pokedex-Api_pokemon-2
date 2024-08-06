@@ -7,6 +7,7 @@ const Pokemons = () => {
     const [allPokemons, setAllPokemons] = useState([]);
     const [pokemonNameSearch, setPokemonNameSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    const [error, setError] = useState(null);
     const pokemonsPerPage = 30;
 
     const filteredPokemons = allPokemons.filter(pokemon => 
@@ -29,8 +30,14 @@ const Pokemons = () => {
         const url = "https://pokeapi.co/api/v2/pokemon?limit=898";
         axios
             .get(url)
-            .then(({ data }) => setAllPokemons(data.results))
-            .catch((err) => console.log(err));
+            .then(({ data }) => {
+                setAllPokemons(data.results);
+                setError(null); // Resetea el error si la llamada es exitosa
+            })
+            .catch((err) => {
+                console.log(err);
+                setError("Error al cargar los Pokémon. Intenta de nuevo más tarde.");
+            });
     }, []);
 
     const handleNextPage = () => {
@@ -51,6 +58,7 @@ const Pokemons = () => {
 
     return (
         <section className='p-4 py-5'>
+            {error && <div className="text-red-500">{error}</div>}
             <form>
                 <div className='bg-white p-4 flex rounded-2xl text-lg'>
                     <input
@@ -115,3 +123,5 @@ const Pokemons = () => {
 };
 
 export default Pokemons;
+
+
