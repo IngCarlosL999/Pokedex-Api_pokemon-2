@@ -78,4 +78,27 @@ const borderByTypes = {
   shadow: "",
 };
 
-  export {colorByTypes , colorByStat, colorByText, borderByTypes}
+const degradado = {
+  normal: "#BCBCAC",
+  fighting: "#bc5442",
+  flying: "#669aff",
+  poison: "#ab549a",
+  ground: "#debc54",
+  rock: "#bcac66",
+  bug: "#abbc1c",
+  ghost: "#6666bc",
+  steel: "#abacbc",
+  fire: "#ff421c",
+  water: "#2f9aff",
+  grass: "#78cd54",
+  electric: "#ffcd30",
+  psychic: "#ff549a",
+  ice: "#78deff",
+  dragon: "#7866ef",
+  dark: "#785442",
+  fairy: "#ffacff",
+  unknown: "",
+  shadow: "",
+};
+
+  export {colorByTypes , colorByStat, colorByText, borderByTypes, degradado}
