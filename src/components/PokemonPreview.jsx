@@ -186,6 +186,7 @@ import React, { useEffect, useState, memo } from 'react';
 import axios from 'axios';
 import { colorByTypes, colorByText, borderByTypes } from '../constants/Colores';
 
+
 const PokemonPreview = memo(({ pokeURL, onClickShowModal }) => {
   const [pokemon, setPokemon] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -260,7 +261,7 @@ const PokemonPreview = memo(({ pokeURL, onClickShowModal }) => {
                 onMouseLeave={() => setTooltip({ visible: false, name: '' })}
               >
                 <img 
-                  src={`/src/img/${type.type.name}.png`} 
+                  src={`./${type.type.name}.png`} 
                   alt={type.type.name}
                   className={`w-4 h-4 mr-1`}
                 />
