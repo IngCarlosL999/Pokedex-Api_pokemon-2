@@ -8,8 +8,8 @@ import usePokemonContext from '../hooks/usePokemonContext'
 const PokemonsList = ({poke}) => {
     
 
-  const {showPokemonById} = usePokemonContext()
- 
+  const {showPokemon} = usePokemonContext()
+
 
   return (
     //aqui en la class generamos las columnas dependiendo del espacio
@@ -18,8 +18,10 @@ const PokemonsList = ({poke}) => {
     {poke.map((pokemon) => 
     (
     // como key se usa el poke.url la url viene de la api de pokemon de cada uno de los pokemones, se le pasa la props pokeURL a PokemonPreview aqui se usa el compomente PokemonPreview
-    <PokemonPreview key={pokemon.url} pokeURL={pokemon.url} 
-    onClickShowModal={showPokemonById} />
+    <PokemonPreview
+    key={pokemon.url} 
+    pokeURL={pokemon.url} 
+    onClickShowModal={showPokemon} />
     
     ))}
 

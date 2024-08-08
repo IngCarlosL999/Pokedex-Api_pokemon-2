@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        outfit: ["Outfit", "sans-serif"]
+        outfit: ["Outfit", "sans-serif"],
+        press: ['Press Start 2P', 'cursive'],
+        roboto:["Roboto Slab"]
       }
     },
   },
