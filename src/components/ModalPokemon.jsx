@@ -1,23 +1,19 @@
 import { IconCurrencyXrp } from '@tabler/icons-react';
-import { colorByTypes, colorByText, borderByTypes } from '../constants/Colores';
+import { colorByTypes, colorByText, borderByTypes,colorByStat } from '../constants/Colores';
+import Evolutions from './Evolutions';
 
 
 
 const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) => {
-  console.log(pokemonDetalle)
+  
 
-  // let pokeId = pokemonDetalle?.id.toString();
-  // if (pokeId.length === 1) {
-  //     pokeId = "00" + pokeId;
-  // } else if (pokeId.length === 2) {
-  //     pokeId = "0" + pokeId;
-  // }
+ console.log(pokemonDetalle)
 
  
 
   return (
     <section 
-      className={`fixed top-0 left-0 right-0 h-screen 
+      className={`fixed top-0 left-0 right-0 h-screen  
                   transition-opacity duration-500 ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
                     ? colorByTypes[pokemonDetalle.types[0]] 
                     : ''}
@@ -31,13 +27,13 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
 
       <article 
     className={`bg-white h-[85%] w-full absolute rounded-tl-3xl rounded-tr-3xl 
-                transition-all duration-500 overflow-y-auto grid content-start 
+                transition-all duration-500  grid content-start 
                 ${showModalPokemon ? "bottom-0" : "-bottom-full"}`}>
     
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-4" >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-4 text-center overflow-auto" >
       
       {/* Card 1 */}
-      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
+      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 justify-between ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
     ? borderByTypes[pokemonDetalle.types[0]] 
     : ''}`}>
           <div className={"flex justify-between items-center mb-4 "}>
@@ -59,46 +55,53 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
       </div>
 
       {/* Card 2 */}
-      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
+      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 justify-between ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
     ? borderByTypes[pokemonDetalle.types[0]] 
     : ''}`}>
-          <h2 className="text-xl font-bold mb-2">Información del Pokémon</h2>
-          <p className="text-gray-700 text-xs"> {pokemonDetalle?.description} </p>
+          <h2 className="text-xl font-bold  ">Información del Pokémon</h2>
+          <p className="text-gray-700 text-xs font-semibold mt-2"> {pokemonDetalle?.description} </p>
 
           {/**Altura y peso */}
-          <section className=' grid grid-cols-2 mt-2 gap-1 text-center'>
+          <section className=' grid grid-cols-2 gap-2  mt-2 text-center'>
               <div >
                 <h4 className='font-bold  capitalize'>Height</h4>
-                <span className='bg-slate-200 block rounded-full'>{pokemonDetalle?.height} cm</span>
+                <span className='bg-slate-200 block rounded-full mt-2'>{pokemonDetalle?.height} cm</span>
               </div>
               <div>
               <h4 className='font-bold  capitalize'>Weight</h4>
-              <span className='  bg-slate-200 block rounded-full '>{pokemonDetalle?.weight} g</span>
+              <span className='  bg-slate-200 block rounded-full mt-2 '>{pokemonDetalle?.weight} g</span>
               </div>
           </section>
 
           {/**Habilidades */}
-          <section className='mt-2 text-center'>
+          <section className=' text-center mt-4 '>
                 <h4 className='font-bold  capitalize'>Abilities</h4>
-              <div className=' grid grid-cols-2 mt-2 gap-1 capitalize'>
+              <ul className=' grid grid-cols-2 mt-2 gap-2 capitalize'>
                 {
                   pokemonDetalle?.abilities.map( (ability)  => (
-                    <div 
+                    <li 
                     key={ability} 
                     className='bg-slate-200 block rounded-full'>
                     <span>{ability}</span>
-                </div>
+                </li>
                   ))}
-              </div>
+              </ul>
           </section>
 
           {/*stats*/}
-          <section className='mt-2'>
-            <h1>Stats</h1>
-              <ul>
-                <li>
-                  stat
-                </li>
+          <section className='grid  mt-4'>
+            <h4 className='font-bold  capitalize'>Stats</h4>
+              <ul className='flex justify-center gap-2 flex-wrap'>
+                  {
+                    pokemonDetalle?.stats.map( stat => (
+                      <li className={`  p-1 rounded-full ${colorByStat[stat.name]}`} key={stat.name}>
+                          <div className='bg-red-500 rounded-full w-[47px] aspect-square content-center'>
+                              <span className='text-sm text-white'>{stat.name}</span>
+                          </div>
+                               <span className='font-semibold text-sm'>{stat.base_stat}</span>
+                      </li>
+                    ))
+                  }
               </ul>
           </section>
 
@@ -109,9 +112,10 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
       <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
     ? borderByTypes[pokemonDetalle.types[0]] 
     : ''}`}>
-          <h2 className="text-2xl font-bold mb-2">Evolución Pokémon</h2>
+          <h2 className="text-xl font-bold mb-2">Evolución Pokémon</h2>
           <section>
-            <h4>evoluciones</h4>
+            
+            <Evolutions evolutionsSend={pokemonDetalle?.evolutions ?? []}/>
           </section>
           
       </div>

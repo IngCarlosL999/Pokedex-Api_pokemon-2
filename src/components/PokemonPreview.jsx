@@ -11,7 +11,7 @@ const PokemonPreview = memo(({ pokeURL, onClickShowModal }) => {
   const [error, setError] = useState(null);
   const [tooltip, setTooltip] = useState({ visible: false, name: '' });
   
-  
+
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -46,7 +46,7 @@ const PokemonPreview = memo(({ pokeURL, onClickShowModal }) => {
   return (
     <article 
       //onClick={onClickShowModal}
-      onClick={()=>onClickShowModal(pokemon)}//aqui se pasa la informacion a pokemoncontext a traves del props y se la pasa a pokemonInfo
+   onClick={()=>onClickShowModal(pokemon)}//aqui se pasa la informacion a pokemoncontext a traves del props y se la pasa a pokemonInfo
       className={`text-center bg-white transition-all rounded-3xl relative font-semibold capitalize pb-4 shadow-lg shadow-slate-400/10 border-4 ${isHovered && pokemon?.types?.length > 0 ? borderByTypes[pokemon.types[0].type.name] : 'border-transparent'} cursor-pointer group grid gap-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

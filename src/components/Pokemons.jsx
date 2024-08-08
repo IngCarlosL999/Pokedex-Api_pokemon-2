@@ -13,11 +13,13 @@ const Pokemons = () => {
     const filteredPokemons = allPokemons.filter(pokemon => 
         pokemon.name.toLowerCase().startsWith(pokemonNameSearch.toLowerCase())
     );
-
+   
     const totalFiltered = filteredPokemons.length;
+  
     const totalPages = Math.ceil(totalFiltered / pokemonsPerPage);
+    
 
-    // Asegurarse de que currentPage no exceda el total de páginas
+    // Me aseguro de que currentPage no exceda el total de páginas
     const validPage = Math.max(1, Math.min(currentPage, totalPages));
 
     const indexOfLastPokemon = validPage * pokemonsPerPage;
@@ -35,7 +37,7 @@ const Pokemons = () => {
             .then(({ data }) => {
                 
                 setAllPokemons(data.results);
-                setError(null); // Resetea el error si la llamada es exitosa
+                //setError(null); // Resetea el error si la llamada es exitosa
             })
             .catch((err) => {
                 console.error(err);

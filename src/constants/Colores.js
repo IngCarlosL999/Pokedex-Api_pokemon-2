@@ -23,13 +23,13 @@ const colorByTypes ={
   }
 
   const colorByStat = {
-    HP: "[&>div]:bg-red-500 bg-slate-100",
-    ATK: "[&>div]:bg-orange-500 bg-slate-100",
-    DEF: "[&>div]:bg-yellow-500 bg-slate-100",
-    SpA: "[&>div]:bg-blue-300 bg-slate-100",
-    SpD: "[&>div]:bg-green-500 bg-slate-100",
-    SPD: "[&>div]:bg-pink-500 bg-slate-100",
-    TOT: "[&>div]:bg-blue-500 bg-blue-300",
+    HP: "[&>div]:bg-[#78cd54] bg-slate-100",
+    ATK: "[&>div]:bg-[#ff421c] bg-slate-100",
+    DEF: "[&>div]:bg-[#bcac66] bg-slate-100",
+    SPA: "[&>div]:bg-[#6666bc] bg-slate-100",
+    SPD: "[&>div]:bg-[#ff549a] bg-slate-100",
+    SPEED: "[&>div]:bg-[#bc5442] bg-slate-100",
+    TOT: "[&>div]:bg-[#2f9aff] bg-blue-300",
   };
 
   const colorByText = {

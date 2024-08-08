@@ -17,13 +17,14 @@ const PokemonProvider = ({children}) =>{
 
 
     const showPokemon = async (pokemonInfo) =>{
+     
        
         const {data: dataSpecies} = await axios.get(pokemonInfo.species.url)
         const {data: dataEvolutions} = await axios.get(dataSpecies.evolution_chain.url) 
         
 
         //console.log(pokemonInfo)
-        // console.log(dataSpecies)
+        //console.log(dataSpecies)
        // console.log(dataEvolutions)
       
         const {id, name, height, weight, types, stats, abilities,sprites} = pokemonInfo;

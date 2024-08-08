@@ -9,7 +9,7 @@ const PokemonsList = ({poke}) => {
     
 
   const {showPokemon} = usePokemonContext()
-
+  
 
   return (
     //aqui en la class generamos las columnas dependiendo del espacio

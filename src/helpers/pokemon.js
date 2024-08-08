@@ -8,7 +8,7 @@ const formaStats = (stats) =>{
         defense: "DEF",
         "special-attack": "SPA",
         "special-defense": "SPD",
-        speed: "SPD"
+        speed: "SPEED"
 
 
     }
