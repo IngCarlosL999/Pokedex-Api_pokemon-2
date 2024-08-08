@@ -66,7 +66,7 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
           <p className="text-gray-700 text-xs"> {pokemonDetalle?.description} </p>
 
           {/**Altura y peso */}
-          <section className=' grid grid-cols-2 mt-2 gap-1'>
+          <section className=' grid grid-cols-2 mt-2 gap-1 text-center'>
               <div >
                 <h4 className='font-bold  capitalize'>Height</h4>
                 <span className='bg-slate-200 block rounded-full'>{pokemonDetalle?.height} cm</span>
@@ -78,7 +78,7 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
           </section>
 
           {/**Habilidades */}
-          <section className='mt-2'>
+          <section className='mt-2 text-center'>
                 <h4 className='font-bold  capitalize'>Abilities</h4>
               <div className=' grid grid-cols-2 mt-2 gap-1 capitalize'>
                 {
