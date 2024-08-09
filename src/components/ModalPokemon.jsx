@@ -30,11 +30,11 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
                 transition-all duration-500  grid content-start 
                 ${showModalPokemon ? "bottom-0" : "-bottom-full"}`}>
     
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-4 text-center overflow-auto" >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-4 text-center overflow-auto hidden-scroll" >
       
       {/* Card 1 */}
       <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 justify-between ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
-    ? borderByTypes[pokemonDetalle.types[0]] 
+    ? borderByTypes[pokemonDetalle?.types[0]] 
     : ''}`}>
           <div className={"flex justify-between items-center mb-4 "}>
               <h2 className={`font-roboto text-2xl font-bold capitalize ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
@@ -44,7 +44,7 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
               </h2>
               <span className="text-sm text-slate-400"># {pokemonDetalle?.id}</span>
           </div>
-          <img className='pixelated w-32 h-32 object-contain mx-auto ' src={pokemonDetalle?.image} alt={pokemonDetalle?.name} />
+          <img className='pixelated w-32 h-32 object-contain mx-auto scale-[110%] ' src={pokemonDetalle?.image} alt={pokemonDetalle?.name} />
           <div className="flex space-x-2 mt-2 justify-center capitalize">
               {pokemonDetalle?.types.map((type) => (
                   <span key={type} className={`inline-block px-2 py-1 text-white rounded ${colorByTypes[type]}`}>
@@ -109,10 +109,10 @@ const ModalPokemon = ({ showModalPokemon, closeModalPokemon, pokemonDetalle }) =
       </div>
 
       {/* Card 3 */}
-      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4 ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
+      <div className={`rounded-lg shadow-lg p-6 flex flex-col border-4  ${pokemonDetalle?.types && pokemonDetalle?.types.length > 0 
     ? borderByTypes[pokemonDetalle.types[0]] 
     : ''}`}>
-          <h2 className="text-xl font-bold mb-2">Evolución Pokémon</h2>
+          <h2 className="text-xl font-bold mb-2 ">Evolución Pokémon</h2>
           <section>
             
             <Evolutions evolutionsSend={pokemonDetalle?.evolutions ?? []}/>

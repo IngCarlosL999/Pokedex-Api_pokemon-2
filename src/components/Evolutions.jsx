@@ -1,8 +1,11 @@
-import { atRule } from "postcss";
-import React from "react";
+
+import usePokemonContext from '../hooks/usePokemonContext'
+
 
 const Evolutions = ({ evolutionsSend }) => {
-  console.log(evolutionsSend);
+
+  const {showPokemon} = usePokemonContext() //uso el pokemoncontext para buscar la informacion
+
   return (
     <div>
       {evolutionsSend.map((evolution, index) => (
@@ -12,7 +15,7 @@ const Evolutions = ({ evolutionsSend }) => {
               <span>Lv. {evolution.min_level}</span>
             </div>
           )}
-          <button className="hover:bg-slate-100 m-2 transition-colors rounded-3xl">
+          <button onClick={()=>showPokemon(evolution.pokemonInfo)} className="hover:bg-slate-100 m-2 transition-colors rounded-3xl">
             <img src={evolution.image} alt="" />
           </button>
         </article>

@@ -26,3 +26,8 @@
 .imagen{
     object-fit: contain;
 }
+
+.hidden-scroll::-webkit-scrollbar{
+    display: none;
+
+}
