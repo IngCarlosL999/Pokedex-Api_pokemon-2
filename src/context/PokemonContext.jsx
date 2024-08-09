@@ -10,23 +10,19 @@ const PokemonProvider = ({children}) =>{
     
 
     const [pokemonDetail,SetPokemonDetail] = useState(null);
-
-
     //Mostrar el Modal
     const [showDetailPokemon, setShowDetailPokemon] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(false);
+
+    
 
     const showPokemon = async (pokemonInfo) =>{
-     
+        setIsLoading(true)
        
         const {data: dataSpecies} = await axios.get(pokemonInfo.species.url)
         const {data: dataEvolutions} = await axios.get(dataSpecies.evolution_chain.url) 
-        
-
-        //console.log(pokemonInfo)
-        //console.log(dataSpecies)
-       // console.log(dataEvolutions)
-      
+          
         const {id, name, height, weight, types, stats, abilities,sprites} = pokemonInfo;
 
       const evolutions = await getEvolutions(dataEvolutions)
@@ -42,11 +38,16 @@ const PokemonProvider = ({children}) =>{
             abilities: formatAbilities(abilities),
             description: getPokemonDescription(dataSpecies),
             evolutions,
-            image: getImgByPokemons(sprites)
+            image: getImgByPokemons(sprites),
+            isLoading
         });
         setShowDetailPokemon(true);
-
-    }
+        setTimeout(()=>{
+          setIsLoading(false)
+        }, 500)
+      };
+    
+    
 
     const closePokemonDetail = () =>{
         setShowDetailPokemon(false);
@@ -60,6 +61,7 @@ const PokemonProvider = ({children}) =>{
             showPokemon,
             closePokemonDetail,
             pokemonDetail,
+            isLoading
         }}
         
     
