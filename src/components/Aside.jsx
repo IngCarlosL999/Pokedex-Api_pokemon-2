@@ -5,7 +5,7 @@ import PokemonDetail from './PokemonDetail';
 const Aside = ({ pokemonDetalle, isLoading }) => {
 
   return (
-    <section className="hidden lg:block sticky top-0 h-screen overflow-hidden">
+    <section className="hidden lg:block sticky top-0 h-screen ">
       <article className={`absolute bottom-0 bg-white w-full h-[85%] rounded-tl-3xl rounded-tr-3xl text-center transition-all duration-500 ${pokemonDetalle && !isLoading ? "left-0" : "left-[50vw]"} `}>
       <PokemonDetail pokemonDetalle={pokemonDetalle} />
       </article>
